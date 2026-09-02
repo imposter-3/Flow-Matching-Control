@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <!-- Pedestal under the elevated iiwa14 base (workspace_optimized profile).
+
+       The base is welded at world (0.950, 0, +0.300); without this it floats.
+       The slab is the MINIMAL square covering the arm's base column: link_0 is a
+       cylinder r = 0.139 m whose axis sits 15 mm from the base origin (world
+       (0.965, 0)), so the square has side 0.278 m. It spans the tabletop
+       (z = 0) up to the base plate (z = 0.300).
+
+       Material matches the main tabletop: rigid hydroelastic, mu 0.5,
+       Hunt-Crossley 1.25. Both are welded to the world, so Drake filters the
+       pedestal-table pair (rigid-rigid contact would otherwise throw under the
+       strict hydroelastic contact model). The task cannot reach it: the nearest
+       face (x = 0.826) clears the T spawn's worst extent by 45 mm and the
+       pusher spawn's by 91 mm (see docs/environment.md). -->
+  <model name="iiwa_pedestal">
+    <link name="pedestal">
+      <inertial>
+        <mass>10.0</mass>
+        <inertia>
+          <ixx>1.0</ixx><ixy>0</ixy><ixz>0</ixz>
+          <iyy>1.0</iyy><iyz>0</iyz><izz>1.0</izz>
+        </inertia>
+      </inertial>
+      <visual name="visual">
+        <geometry>
+          <box><size>0.278 0.278 0.300</size></box>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <box><size>0.278 0.278 0.300</size></box>
+        </geometry>
+        <drake:proximity_properties>
+          <drake:rigid_hydroelastic/>
+          <drake:hunt_crossley_dissipation>1.25</drake:hunt_crossley_dissipation>
+          <drake:mesh_resolution_hint>0.01</drake:mesh_resolution_hint>
+          <drake:mu_dynamic>0.5</drake:mu_dynamic>
+          <drake:mu_static>0.5</drake:mu_static>
+        </drake:proximity_properties>
+      </collision>
+    </link>
+  </model>
+</sdf>

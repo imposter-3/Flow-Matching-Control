@@ -1,0 +1,247 @@
+# Push-T environment, workspace_optimized profile.
+#
+# A KUKA iiwa14 on a 0.300 m pedestal at (0.950, 0.000, +0.300), yaw 180 deg,
+# serving a 480 x 480 mm action square centred at (0.500, 0.000): the measured
+# largest square whose every point has collision-free, joint-limit-respecting
+# IK. The square is the normal human and policy action set; the certified
+# annulus fence remains underneath it as the final safety guard.
+#
+# Adapted from Michaelszeng/diffusion-policy-drake @ 2bfd1394,
+# config/sim_config/sim_sim/gamepad_teleop_carbon.yaml. What differs: the hydra
+# `defaults` block and roughly 80 dormant commented-out disturbance blocks are
+# gone, and the slider is a 120 mm T rather than upstream's 165.1 mm one
+# (arbitrary_shape_pickle_path and slider_goal_pose.y). Every other physical
+# number is unchanged.
+#
+# The goal pose and the spawn box below are not inherited from upstream; they
+# were chosen for this base placement.
+#
+# slider_goal_pose does not follow upstream's "y = com_offset_y"
+# convention (which exists to put the crossbar centre on world y = 0). That
+# convention is meaningful only when the arm sits at the world origin and y = 0 is
+# its symmetry plane; with the base at (1.030, 0.390, 180 deg) it is arbitrary. The
+# goal is instead placed to maximise the worst-case margin from the T's theta-aware
+# pusher CONTACT ENVELOPE to the safe action-set boundary, subject to the spawn box
+# staying on the table, inside the overhead camera frame, and clear of the pinned
+# pusher_start_pose. `zeng_canonical` keeps the original convention unchanged.
+#   worst-bearing margin 55.6 -> 71.0 mm, spread 96.8 -> 81.6 mm.
+#
+# Units are SI: meters and radians. The only degrees is multi_run_config.rot_tol.
+#
+
+SEED: 1
+meshcat_port: 7000
+
+### Environment
+########################################################################################################################
+slider_type: 'arbitrary'
+arbitrary_shape_pickle_path: src/pusht_drake/assets/pusht_t.pkl
+arbitrary_shape_rgba: [0.15, 0.15, 0.15, 1.0]
+arbitrary_shape_visual_mesh_path: null # Can be null (collision mesh will be used)
+physical_properties: # Slider physical properties
+  mass: 0.1
+  # Geometry-consistent uniform-density inertia about the COM for the 120 mm T at
+  # 0.1 kg -- derived by pusht_drake.sim.tblock.PUSHT_T.inertia_about_com(0.1) and
+  # pinned against it by the geometry checks. Replaces upstream's diag(1e-5)
+  # placeholder, which was isotropic (impossible for a T) and 19.3x too small in
+  # yaw: the T's rotation snapped to the friction-limited rate in 0.6 ms instead
+  # of the physical ~12 ms, distorting exactly the channel this task is about.
+  # zeng_canonical retains the upstream placeholder for reproducibility.
+  inertia: [[1.2887755102040815e-4, 0.0, 0.0], [0.0, 7.928571428571429e-5, 0.0], [0.0, 0.0, 1.9316326530612244e-4]]
+  center_of_mass: null # [0.0, 0.0, 0.0] # Use null for uniform density
+  is_compliant: true
+  hydroelastic_modulus: 1.0e6
+  mu_dynamic: 0.5
+  mu_static: 0.5
+  mesh_resolution_hint: 0.01
+contact_model: ContactModel.kHydroelastic
+visualize_desired: true
+# The goal sits at the EXACT centre of the 480 mm action square -- maximum and
+# symmetric margin to every wall (240 mm), and the natural origin for the
+# centred spawn boxes below.
+slider_goal_pose:
+  x: 0.500
+  y: 0.000
+  theta: 0.0
+pusher_radius: 0.015
+# The pusher's NOMINAL pose: the square centre. Per-episode starts are sampled
+# from task_init.pusher_spawn below; this pose anchors default_joint_positions,
+# the certified nominal-posture branch (on-axis, azimuth 0) and deterministic
+# resets.
+pusher_start_pose:
+  x: 0.500
+  y: 0.000
+  theta: 0.0
+time_step: 0.001
+draw_frames: true
+use_realtime: true
+delay_before_execution: 2.0
+gamepad:
+  # DEVIATION from upstream's 5.75e-5 (0.0575 m/s at full stick -- too slow to drive
+  # the T around). Chosen so full stick is a round 0.1 m/s: the value is a distance
+  # per output-port evaluation, and DiffIK evaluates at 1/time_step = 1 kHz.
+  # The trigger modifiers put LT at 0.15 m/s and RT at 0.05.
+  translation_scale: 1.0e-4
+  # DEVIATION from upstream's 0.01. Measured on the Xbox One S pad on this machine
+  # (measured twice): left-stick resting drift reaches 0.06-0.07
+  # per axis, so upstream's 0.01 would let a freed stick creep the pusher
+  # continuously. 0.09 clears the measured drift with margin. Axis and button
+  # indices are unchanged -- the pad reports the W3C standard mapping.
+  deadzone: 0.09
+  gamepad_orientation:
+    - [1, 0]
+    - [0, -1] # requires reflection (not SO(3))
+# The normal human/policy Cartesian action set: commands are clamped into this
+# square BEFORE the annulus safety guard. Frozen with the base placement; changing
+# either invalidates the certification in workspace_map_workspace_optimized.json.
+action_square:
+  center: [0.500, 0.000]
+  side: 0.480
+
+# THE frozen task-initialization distribution -- used by teleop data collection
+# and by every future evaluation, identically (pusht_drake.sim.spawn):
+#   * T: its COM uniform in the 360 mm square (theta uniform in (-pi, pi)); the
+#     body MAY overhang the square/action-set edge -- only the COM is bounded.
+#     360, not the pusher's 440: the T's circumradius is 80.7 mm, so a COM on the
+#     360 box edge can still reach 100.7 mm past it -- well inside the 480 action
+#     square -- and every face stays approachable from all sides.
+#   * pusher: uniform in the 440 mm square.
+#   * both boxes share the action square's centre; the only rejection is a
+#     physical T-pusher overlap, resolved by resampling the PUSHER (keeps the
+#     T's distribution exactly uniform).
+task_init:
+  t_spawn:
+    center: [0.500, 0.000]
+    side: 0.360
+  pusher_spawn:
+    center: [0.500, 0.000]
+    side: 0.440
+
+use_hardware: false
+# Pushing height of the pusher TIP above the tabletop. Lowered from the inherited
+# 0.015 at the freeze: with the 30 mm-thick T this gives 20 mm of side-face
+# overlap (67%) instead of 15 mm (50%) and cuts the out-of-plane moment arm above
+# the T's COM from 7.5 to 5 mm, while keeping 10 mm of table clearance (~115x the
+# measured 87 um tracking residual). 0.0075 was measured first and REJECTED: the
+# arm reaches down from the elevated base, so lowering the plane contracts the
+# outer reachable rim (~0.5 mm/mm), and at 0.0075 the certified fence no longer
+# contained the square's corners (-0.5 mm). 0.010 is the lowest measured plane
+# that keeps the full 480 mm square certified. Certification + nominal schedule
+# re-derived at this plane (workspace_map json provenance).
+pusher_z_offset: 0.010
+camera_configs:
+  - name: 'overhead_camera'
+    orientation: # slghtly different
+      roll: -2.55
+      pitch: -0.035
+      yaw: 1.5462387054402587
+    position: [0.91, -0.075, 0.45] # slightly different
+    width: 640
+    height: 480
+    center_x: 318.05
+    center_y: 244.107
+    focal_x: 616.704
+    focal_y: 616.777
+    background:
+      r: 0.55
+      g: 0.45
+      b: 0.35
+      a: 1.0
+    lights:
+      - direction: [0.5, 0, 1]
+        color: [1.0, 0.98, 0.957]
+        intensity: 0.5
+      - direction: [-0.5, 0, 1]
+        color: [1.0, 0.98, 0.957]
+        intensity: 0.5
+    cast_shadows: true
+    show_rgb: false
+    randomize: false
+  - name: 'wrist_camera'
+    parent_frame: 'iiwa_link_7'
+    orientation:
+      roll: 0.2
+      pitch: 0.0
+      yaw: 1.5707
+    position:
+      - -0.0825
+      - -0.024
+      - 0.0575
+    width: 640
+    height: 480
+    center_x: 318.05
+    center_y: 244.107
+    focal_x: 616.704
+    focal_y: 616.777
+    light_direction: [0.25, -1.0, 1.75]
+    cast_shadows: false
+    background:
+      r: 0.47
+      g: 0.39
+      b: 0.27
+      a: 1.0
+    show_rgb: false
+    randomize: false
+domain_randomization_color_range: 0.0
+
+########################################################################################################################
+### MultiRunConfig
+########################################################################################################################
+multi_run_config:
+  num_runs: 100
+  max_attempt_duration: 75
+  seed: ${SEED}
+  slider_type: ${slider_type}
+  arbitrary_shape_pickle_path: ${arbitrary_shape_pickle_path}
+  pusher_start_pose: ${pusher_start_pose}
+  slider_goal_pose: ${slider_goal_pose}
+  # Scaled from Zeng's 0.400 x 0.300 by the slider circumradius ratio
+  # 0.10087 / 0.11118 = 0.9072, i.e. geometric similarity. That reproduces the
+  # canonical spawn-acceptance rate almost exactly (old T in the old box 22.07%,
+  # our T in this box 22.35%), so the initial-condition diversity is the canonical
+  # task's, not a smaller or larger one. Keeping 0.400 x 0.300 with the smaller T
+  # would instead add a 47%-larger tail of poses whose lateral (rotation) contacts
+  # are the least executable.
+  workspace_width: 0.290
+  workspace_height: 0.218
+  # Success criteria
+  trans_tol: 0.015
+  rot_tol: 3.5 # degrees
+  pusher_pos_tol: 0.04
+  evaluate_final_pusher_position: true
+  evaluate_final_slider_rotation: true
+  success_criteria: 'tolerance' # 'tolerance' or 'convex_hull'
+  # Dataset path is only required when using
+  # the convex_hull success criteria
+  dataset_path: ''
+  slider_physical_properties: ${physical_properties}
+  num_trials_to_record: 20 # number of trials to record in the meshcat recording
+  trials_per_recording_file: 20 # number of trials to record per meshcat recording file
+
+########################################################################################################################
+### Robot specific configs
+########################################################################################################################
+# The push-start configuration: yaw-free IK for pusher_start_pose (0.587, 0.15)
+# from the iiwa14 base at (0.950, 0, +0.300, yaw 180 deg), J7 = 0 (the free
+# self-motion DOF under the yaw-relaxed controller). Solved by multi-start IK
+# maximising (joint margin, sigma_min(J_task)):
+#   sigma_min(J_task) = 0.2239, joint margin 29.5 deg, tip plane z = 0.010.
+#   The pose is on the base axis (azimuth 0), so the posture is symmetric and
+#   the certified nominal-branch march anchors here directly.
+default_joint_positions: [0.0002, 1.4818, 0.0, -1.5802, 0.0, 0.0797, 0.0]
+joint_velocity_limit_factor: 1.0 # .inf
+
+########################################################################################################################
+### Data Collection Config
+########################################################################################################################
+data_collection_config:
+  # Only policy_freq is read at runtime (the 10 Hz sampling and the dataset
+  # sidecar). Chunk sizes live in pusht.data.schema; upstream's rendering/convert
+  # pipeline keys were removed with the pipeline itself.
+  policy_freq: 10.0
+
+# --- base-placement profile -------------------------------------------------
+# Selects the iiwa14 directives, the certified fence map and the scene section.
+# The action-square checks require this key, so a missing profile raises rather
+# than falling back to another placement.
+robot_base_profile: workspace_optimized

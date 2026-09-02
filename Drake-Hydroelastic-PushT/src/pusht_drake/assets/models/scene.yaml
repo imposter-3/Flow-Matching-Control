@@ -1,0 +1,39 @@
+# The physical world, minus the T: arm, table, pedestal.
+#
+# The T is generated rather than shipped (its inertia follows from the
+# configured mass and its contact properties are configuration), so it is added
+# by pusht_drake.sim.scene after these directives and before Finalize.
+#
+# THE ORDER IS LOAD-BEARING. Model instances are indexed in the order they are
+# added, and that ordering reaches the contact solver: iiwa, pusher,
+# small_table, iiwa_pedestal, then the slider. It reproduces the upstream
+# station's "workspace-optimized" scenario (Michaelszeng/diffusion-policy-drake;
+# see NOTICE.md), which nested the same directives one level deeper.
+
+directives:
+- add_directives:
+    file: package://pusht_drake/arm.yaml
+
+- add_model:
+    name: small_table
+    file: package://pusht_drake/table.urdf
+
+- add_weld:
+    parent: world
+    child: small_table::TableTop
+    X_PC:
+        rotation: !Rpy { deg: [0.0, 0.0, 0.0]}
+        translation: [0.486, 0, 0.0]
+
+# Pedestal under the elevated base (see pedestal.sdf). Welded to the world like
+# the table, so their touching rigid-hydroelastic pair is collision-filtered as
+# one welded subgraph.
+- add_model:
+    name: iiwa_pedestal
+    file: package://pusht_drake/pedestal.sdf
+
+- add_weld:
+    parent: world
+    child: iiwa_pedestal::pedestal
+    X_PC:
+        translation: [0.965, 0.0, 0.150]

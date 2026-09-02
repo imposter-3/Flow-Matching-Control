@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>pusht_drake</name>
+  <version>1.0.0</version>
+  <description>
+    Models for the Drake Push-T simulation: the pusher, the table and the
+    pedestal under the elevated arm base, plus the model directives that
+    assemble them.
+
+    The pusher, table and pedestal descriptions are adapted from
+    Michaelszeng/diffusion-policy-drake (MIT; upstream authors Bernhard Paus
+    Graesdal, Adam Wei and Abhinav Agarwal). See NOTICE.md at the repository
+    root for the full provenance and the papers to cite.
+  </description>
+  <author email="graesdal@mit.edu">Bernhard Paus Graesdal</author>
+  <maintainer email="graesdal@mit.edu">Bernhard Paus Graesdal</maintainer>
+  <license>MIT</license>
+</package>

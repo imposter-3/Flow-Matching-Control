@@ -1,0 +1,3871 @@
+{
+  "schema_version": 1,
+  "zarr_format": 2,
+  "units": "meters, radians; SI throughout",
+  "frames": "Drake world frame (== iiwa base). Table top surface at world z = 0. Slider pose is about its area centroid, not the crossbar centre.",
+  "action_semantics": "action[t] = state[t+1][:2]: the ABSOLUTE pusher (x, y) target one control period (100 ms) ahead, in meters. Not a delta, not a velocity. The final action of an episode is repeated.",
+  "lowdim_dtype": "float32",
+  "policy_freq_hz": 10.0,
+  "target_convention": "config_goal",
+  "filters_applied": [],
+  "cameras": [],
+  "task_geometry": {
+    "base_profile": "workspace_optimized",
+    "config": "config/pusht_iiwa_workspace_optimized.yaml",
+    "slider": {
+      "name": "PUSHT_T_120MM",
+      "total_width_m": 0.12,
+      "total_height_m": 0.12,
+      "bar_width_m": 0.03,
+      "crossbar_height_m": 0.03,
+      "stem_length_m": 0.09,
+      "thickness_m": 0.03,
+      "com_offset_y_m": -0.02571428571428571,
+      "circumradius_m": 0.08069215878755456,
+      "mass_kg": 0.1
+    },
+    "pusher_radius_m": 0.015,
+    "pusher_start_pose": [
+      0.5,
+      0.0
+    ],
+    "slider_goal_pose": [
+      0.5,
+      0.0,
+      0.0
+    ],
+    "task_init": {
+      "t_spawn": {
+        "center": [
+          0.5,
+          0.0
+        ],
+        "side": 0.36,
+        "semantics": "T COM uniform; theta uniform (-pi, pi)"
+      },
+      "pusher_spawn": {
+        "center": [
+          0.5,
+          0.0
+        ],
+        "side": 0.44,
+        "semantics": "uniform; resampled on T overlap"
+      }
+    },
+    "action_square": {
+      "center": [
+        0.5,
+        0.0
+      ],
+      "side": 0.48
+    },
+    "spawn_box_wh_m": null,
+    "success_tolerances": {
+      "trans_m": 0.015,
+      "rot_deg": 3.5,
+      "pusher_pos_m": 0.04
+    }
+  },
+  "git_sha": null,
+  "provenance": {
+    "merged_from": [
+      {
+        "source": "demos_all.zarr",
+        "n_episodes": 318,
+        "n_frames": 55647,
+        "merged_index_range": [
+          0,
+          318
+        ]
+      },
+      {
+        "source": "_recording_20260825T173604.zarr",
+        "n_episodes": 24,
+        "n_frames": 3934,
+        "merged_index_range": [
+          318,
+          342
+        ]
+      }
+    ]
+  },
+  "n_episodes": 342,
+  "n_frames": 59581,
+  "episodes": [
+    {
+      "index": 0,
+      "n_frames": 272,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 0,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 1,
+      "n_frames": 251,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 1,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 2,
+      "n_frames": 219,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 2,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 3,
+      "n_frames": 132,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 3,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 4,
+      "n_frames": 424,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 4,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 5,
+      "n_frames": 145,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 5,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 6,
+      "n_frames": 200,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 6,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 7,
+      "n_frames": 253,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 7,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 8,
+      "n_frames": 244,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 8,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 9,
+      "n_frames": 222,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_001.zarr",
+      "source_index": 9,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 10,
+      "n_frames": 181,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 10,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 11,
+      "n_frames": 339,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 11,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 12,
+      "n_frames": 228,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 12,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 13,
+      "n_frames": 255,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 13,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 14,
+      "n_frames": 285,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 14,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 15,
+      "n_frames": 188,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 15,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 16,
+      "n_frames": 233,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 16,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 17,
+      "n_frames": 231,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 17,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 18,
+      "n_frames": 256,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 18,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 19,
+      "n_frames": 181,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 19,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 20,
+      "n_frames": 189,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 20,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 21,
+      "n_frames": 157,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 21,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 22,
+      "n_frames": 245,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 22,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 23,
+      "n_frames": 218,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 23,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 24,
+      "n_frames": 230,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 24,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 25,
+      "n_frames": 174,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 25,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 26,
+      "n_frames": 151,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 26,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 27,
+      "n_frames": 361,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 27,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 28,
+      "n_frames": 253,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 28,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 29,
+      "n_frames": 228,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 29,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 30,
+      "n_frames": 186,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 30,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 31,
+      "n_frames": 247,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 31,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 32,
+      "n_frames": 241,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 32,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 33,
+      "n_frames": 244,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 33,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 34,
+      "n_frames": 142,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 34,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 35,
+      "n_frames": 180,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 35,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 36,
+      "n_frames": 175,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 36,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 37,
+      "n_frames": 146,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 37,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 38,
+      "n_frames": 187,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 38,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 39,
+      "n_frames": 140,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 39,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 40,
+      "n_frames": 321,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 40,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 41,
+      "n_frames": 127,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 41,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 42,
+      "n_frames": 199,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 42,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 43,
+      "n_frames": 136,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 43,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 44,
+      "n_frames": 193,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 44,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 45,
+      "n_frames": 120,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 45,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 46,
+      "n_frames": 108,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 46,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 47,
+      "n_frames": 232,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 47,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 48,
+      "n_frames": 240,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 48,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 49,
+      "n_frames": 305,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 49,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 50,
+      "n_frames": 179,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 50,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 51,
+      "n_frames": 184,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 51,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 52,
+      "n_frames": 132,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 52,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 53,
+      "n_frames": 197,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 53,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 54,
+      "n_frames": 100,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 54,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 55,
+      "n_frames": 130,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 55,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 56,
+      "n_frames": 215,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 56,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 57,
+      "n_frames": 152,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 57,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 58,
+      "n_frames": 107,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 58,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 59,
+      "n_frames": 78,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 59,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 60,
+      "n_frames": 149,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 60,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 61,
+      "n_frames": 124,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 61,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 62,
+      "n_frames": 123,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 62,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 63,
+      "n_frames": 238,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 63,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 64,
+      "n_frames": 213,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 64,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 65,
+      "n_frames": 141,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 65,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 66,
+      "n_frames": 301,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_002.zarr",
+      "source_index": 66,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 67,
+      "n_frames": 129,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 67,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 68,
+      "n_frames": 274,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 68,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 69,
+      "n_frames": 167,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 69,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 70,
+      "n_frames": 247,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 70,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 71,
+      "n_frames": 213,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 71,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 72,
+      "n_frames": 188,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 72,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 73,
+      "n_frames": 111,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 73,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 74,
+      "n_frames": 223,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 74,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 75,
+      "n_frames": 227,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 75,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 76,
+      "n_frames": 152,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 76,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 77,
+      "n_frames": 138,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 77,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 78,
+      "n_frames": 121,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 78,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 79,
+      "n_frames": 180,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 79,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 80,
+      "n_frames": 133,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 80,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 81,
+      "n_frames": 197,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 81,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 82,
+      "n_frames": 159,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 82,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 83,
+      "n_frames": 140,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 83,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 84,
+      "n_frames": 146,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 84,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 85,
+      "n_frames": 244,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 85,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 86,
+      "n_frames": 119,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 86,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 87,
+      "n_frames": 117,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 87,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 88,
+      "n_frames": 237,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 88,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 89,
+      "n_frames": 64,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 89,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 90,
+      "n_frames": 175,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 90,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 91,
+      "n_frames": 203,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 91,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 92,
+      "n_frames": 233,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 92,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 93,
+      "n_frames": 152,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 93,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 94,
+      "n_frames": 104,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 94,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 95,
+      "n_frames": 224,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 95,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 96,
+      "n_frames": 169,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 96,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 97,
+      "n_frames": 123,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 97,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 98,
+      "n_frames": 208,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_003.zarr",
+      "source_index": 98,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 99,
+      "n_frames": 156,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 99,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 100,
+      "n_frames": 178,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 100,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 101,
+      "n_frames": 171,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 101,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 102,
+      "n_frames": 301,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 102,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 103,
+      "n_frames": 201,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 103,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 104,
+      "n_frames": 118,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 104,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 105,
+      "n_frames": 260,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 105,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 106,
+      "n_frames": 125,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 106,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 107,
+      "n_frames": 213,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 107,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 108,
+      "n_frames": 187,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 108,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 109,
+      "n_frames": 84,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 109,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 110,
+      "n_frames": 169,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 110,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 111,
+      "n_frames": 164,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 111,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 112,
+      "n_frames": 206,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 112,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 113,
+      "n_frames": 147,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 113,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 114,
+      "n_frames": 163,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 114,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 115,
+      "n_frames": 146,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 115,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 116,
+      "n_frames": 200,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 116,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 117,
+      "n_frames": 109,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 117,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 118,
+      "n_frames": 104,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 118,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 119,
+      "n_frames": 126,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 119,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 120,
+      "n_frames": 291,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 120,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 121,
+      "n_frames": 74,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 121,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 122,
+      "n_frames": 134,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 122,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 123,
+      "n_frames": 152,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 123,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 124,
+      "n_frames": 199,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 124,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 125,
+      "n_frames": 118,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 125,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 126,
+      "n_frames": 63,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 126,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 127,
+      "n_frames": 137,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 127,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 128,
+      "n_frames": 91,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 128,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 129,
+      "n_frames": 189,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 129,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 130,
+      "n_frames": 183,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 130,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 131,
+      "n_frames": 166,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 131,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 132,
+      "n_frames": 194,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 132,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 133,
+      "n_frames": 267,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 133,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 134,
+      "n_frames": 144,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 134,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 135,
+      "n_frames": 174,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 135,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 136,
+      "n_frames": 65,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 136,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 137,
+      "n_frames": 201,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 137,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 138,
+      "n_frames": 257,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 138,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 139,
+      "n_frames": 250,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 139,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 140,
+      "n_frames": 228,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 140,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 141,
+      "n_frames": 204,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 141,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 142,
+      "n_frames": 101,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 142,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 143,
+      "n_frames": 107,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 143,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 144,
+      "n_frames": 190,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 144,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 145,
+      "n_frames": 217,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 145,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 146,
+      "n_frames": 213,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 146,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 147,
+      "n_frames": 120,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 147,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 148,
+      "n_frames": 143,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 148,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 149,
+      "n_frames": 140,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 149,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 150,
+      "n_frames": 190,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 150,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 151,
+      "n_frames": 113,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 151,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 152,
+      "n_frames": 174,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 152,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 153,
+      "n_frames": 123,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 153,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 154,
+      "n_frames": 180,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 154,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 155,
+      "n_frames": 180,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 155,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 156,
+      "n_frames": 198,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 156,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 157,
+      "n_frames": 317,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 157,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 158,
+      "n_frames": 159,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 158,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 159,
+      "n_frames": 85,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 159,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 160,
+      "n_frames": 211,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 160,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 161,
+      "n_frames": 156,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 161,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 162,
+      "n_frames": 126,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 162,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 163,
+      "n_frames": 270,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 163,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 164,
+      "n_frames": 155,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 164,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 165,
+      "n_frames": 136,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 165,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 166,
+      "n_frames": 239,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 166,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 167,
+      "n_frames": 205,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 167,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 168,
+      "n_frames": 181,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 168,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 169,
+      "n_frames": 104,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 169,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 170,
+      "n_frames": 195,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 170,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 171,
+      "n_frames": 148,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 171,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 172,
+      "n_frames": 165,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 172,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 173,
+      "n_frames": 247,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 173,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 174,
+      "n_frames": 167,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 174,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 175,
+      "n_frames": 182,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 175,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 176,
+      "n_frames": 143,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 176,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 177,
+      "n_frames": 138,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 177,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 178,
+      "n_frames": 264,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 178,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 179,
+      "n_frames": 119,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 179,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 180,
+      "n_frames": 95,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 180,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 181,
+      "n_frames": 129,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 181,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 182,
+      "n_frames": 255,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 182,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 183,
+      "n_frames": 177,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 183,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 184,
+      "n_frames": 204,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 184,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 185,
+      "n_frames": 131,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 185,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 186,
+      "n_frames": 176,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 186,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 187,
+      "n_frames": 113,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 187,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 188,
+      "n_frames": 125,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 188,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 189,
+      "n_frames": 132,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 189,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 190,
+      "n_frames": 154,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 190,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 191,
+      "n_frames": 174,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_004.zarr",
+      "source_index": 191,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 192,
+      "n_frames": 158,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 192,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 193,
+      "n_frames": 114,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 193,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 194,
+      "n_frames": 147,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 194,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 195,
+      "n_frames": 224,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 195,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 196,
+      "n_frames": 133,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 196,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 197,
+      "n_frames": 121,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 197,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 198,
+      "n_frames": 171,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 198,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 199,
+      "n_frames": 272,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 199,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 200,
+      "n_frames": 133,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 200,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 201,
+      "n_frames": 131,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 201,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 202,
+      "n_frames": 256,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 202,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 203,
+      "n_frames": 147,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 203,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 204,
+      "n_frames": 192,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 204,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 205,
+      "n_frames": 176,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 205,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 206,
+      "n_frames": 299,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 206,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 207,
+      "n_frames": 165,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 207,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 208,
+      "n_frames": 193,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 208,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 209,
+      "n_frames": 176,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 209,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 210,
+      "n_frames": 248,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 210,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 211,
+      "n_frames": 265,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 211,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 212,
+      "n_frames": 94,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 212,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 213,
+      "n_frames": 98,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 213,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 214,
+      "n_frames": 159,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 214,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 215,
+      "n_frames": 137,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 215,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 216,
+      "n_frames": 199,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 216,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 217,
+      "n_frames": 222,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 217,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 218,
+      "n_frames": 172,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 218,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 219,
+      "n_frames": 281,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 219,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 220,
+      "n_frames": 147,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 220,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 221,
+      "n_frames": 154,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 221,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 222,
+      "n_frames": 205,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 222,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 223,
+      "n_frames": 205,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 223,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 224,
+      "n_frames": 223,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 224,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 225,
+      "n_frames": 107,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 225,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 226,
+      "n_frames": 227,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 226,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 227,
+      "n_frames": 208,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 227,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 228,
+      "n_frames": 110,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 228,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 229,
+      "n_frames": 197,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 229,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 230,
+      "n_frames": 148,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 230,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 231,
+      "n_frames": 164,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 231,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 232,
+      "n_frames": 157,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 232,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 233,
+      "n_frames": 101,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 233,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 234,
+      "n_frames": 118,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 234,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 235,
+      "n_frames": 117,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 235,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 236,
+      "n_frames": 136,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 236,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 237,
+      "n_frames": 119,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 237,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 238,
+      "n_frames": 100,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 238,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 239,
+      "n_frames": 156,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 239,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 240,
+      "n_frames": 147,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 240,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 241,
+      "n_frames": 190,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 241,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 242,
+      "n_frames": 183,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 242,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 243,
+      "n_frames": 184,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 243,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 244,
+      "n_frames": 122,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 244,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 245,
+      "n_frames": 210,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 245,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 246,
+      "n_frames": 176,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 246,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 247,
+      "n_frames": 124,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 247,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 248,
+      "n_frames": 209,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 248,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 249,
+      "n_frames": 125,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 249,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 250,
+      "n_frames": 175,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 250,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 251,
+      "n_frames": 115,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 251,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 252,
+      "n_frames": 97,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 252,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 253,
+      "n_frames": 141,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 253,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 254,
+      "n_frames": 103,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 254,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 255,
+      "n_frames": 123,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 255,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 256,
+      "n_frames": 135,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 256,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 257,
+      "n_frames": 160,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 257,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 258,
+      "n_frames": 157,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 258,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 259,
+      "n_frames": 120,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 259,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 260,
+      "n_frames": 274,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 260,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 261,
+      "n_frames": 194,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 261,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 262,
+      "n_frames": 154,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 262,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 263,
+      "n_frames": 118,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 263,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 264,
+      "n_frames": 71,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 264,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 265,
+      "n_frames": 203,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 265,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 266,
+      "n_frames": 186,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 266,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 267,
+      "n_frames": 170,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 267,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 268,
+      "n_frames": 166,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 268,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 269,
+      "n_frames": 251,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 269,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 270,
+      "n_frames": 235,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 270,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 271,
+      "n_frames": 134,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 271,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 272,
+      "n_frames": 196,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 272,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 273,
+      "n_frames": 139,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 273,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 274,
+      "n_frames": 182,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 274,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 275,
+      "n_frames": 164,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 275,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 276,
+      "n_frames": 177,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 276,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 277,
+      "n_frames": 100,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 277,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 278,
+      "n_frames": 174,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 278,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 279,
+      "n_frames": 114,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 279,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 280,
+      "n_frames": 120,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 280,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 281,
+      "n_frames": 145,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 281,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 282,
+      "n_frames": 157,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 282,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 283,
+      "n_frames": 156,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 283,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 284,
+      "n_frames": 121,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 284,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 285,
+      "n_frames": 196,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 285,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 286,
+      "n_frames": 241,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 286,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 287,
+      "n_frames": 193,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 287,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 288,
+      "n_frames": 178,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 288,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 289,
+      "n_frames": 140,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 289,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 290,
+      "n_frames": 150,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 290,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 291,
+      "n_frames": 119,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 291,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 292,
+      "n_frames": 202,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 292,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 293,
+      "n_frames": 231,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 293,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 294,
+      "n_frames": 126,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 294,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 295,
+      "n_frames": 183,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 295,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 296,
+      "n_frames": 107,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 296,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 297,
+      "n_frames": 119,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 297,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 298,
+      "n_frames": 226,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 298,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 299,
+      "n_frames": 158,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 299,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 300,
+      "n_frames": 83,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "source": "demos_005.zarr",
+      "source_index": 300,
+      "source_store": "demos_all.zarr"
+    },
+    {
+      "index": 301,
+      "n_frames": 163,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 240505789431305730338962501002010311234,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.48745164930787194,
+        0.1712813156429155,
+        2.210991024156065
+      ],
+      "initial_pusher_xy": [
+        0.4643529314478922,
+        -0.19178977146639922
+      ],
+      "init_set": "failures_39200_bspline",
+      "init_index": 0,
+      "source_store": "demos_all.zarr",
+      "source_index": 301
+    },
+    {
+      "index": 302,
+      "n_frames": 231,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 240505789431305730338962501002010311234,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.32473224813884144,
+        0.13494881385819651,
+        2.821137524324309
+      ],
+      "initial_pusher_xy": [
+        0.5878526117428888,
+        0.1315699936861436
+      ],
+      "init_set": "failures_39200_bspline",
+      "init_index": 1,
+      "source_store": "demos_all.zarr",
+      "source_index": 302
+    },
+    {
+      "index": 303,
+      "n_frames": 241,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 240505789431305730338962501002010311234,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.320761542316618,
+        0.1529210201977344,
+        2.7926877122141964
+      ],
+      "initial_pusher_xy": [
+        0.31276652701832375,
+        0.0339106565228616
+      ],
+      "init_set": "failures_39200_bspline",
+      "init_index": 2,
+      "source_store": "demos_all.zarr",
+      "source_index": 303
+    },
+    {
+      "index": 304,
+      "n_frames": 154,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 240505789431305730338962501002010311234,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.4721791834404261,
+        0.14498650772670268,
+        -0.8529810365883255
+      ],
+      "initial_pusher_xy": [
+        0.4053973247342779,
+        -0.13070314698571417
+      ],
+      "init_set": "failures_39200_bspline",
+      "init_index": 3,
+      "source_store": "demos_all.zarr",
+      "source_index": 304
+    },
+    {
+      "index": 305,
+      "n_frames": 132,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 240505789431305730338962501002010311234,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.5691078098053193,
+        -0.06742866330597427,
+        -2.049894620983612
+      ],
+      "initial_pusher_xy": [
+        0.5805679665578595,
+        -0.19709011589699943
+      ],
+      "init_set": "failures_39200_bspline",
+      "init_index": 4,
+      "source_store": "demos_all.zarr",
+      "source_index": 305
+    },
+    {
+      "index": 306,
+      "n_frames": 187,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 240505789431305730338962501002010311234,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.3380717334425256,
+        -0.05422861231009776,
+        1.753501013193779
+      ],
+      "initial_pusher_xy": [
+        0.702794254824598,
+        -0.06764516449006866
+      ],
+      "init_set": "failures_39200_bspline",
+      "init_index": 5,
+      "source_store": "demos_all.zarr",
+      "source_index": 306
+    },
+    {
+      "index": 307,
+      "n_frames": 145,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 240505789431305730338962501002010311234,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.3615167892516039,
+        0.15014744001460978,
+        -1.2723450129251341
+      ],
+      "initial_pusher_xy": [
+        0.6025720247516262,
+        -0.07618313483198702
+      ],
+      "init_set": "failures_39200_bspline",
+      "init_index": 6,
+      "source_store": "demos_all.zarr",
+      "source_index": 307
+    },
+    {
+      "index": 308,
+      "n_frames": 141,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.49521578259214466,
+        0.1515493650712057,
+        -2.9347970715576444
+      ],
+      "initial_pusher_xy": [
+        0.40496312235987847,
+        -0.001761058313360514
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 0,
+      "source_store": "demos_all.zarr",
+      "source_index": 308
+    },
+    {
+      "index": 309,
+      "n_frames": 271,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.6779556495064268,
+        0.17813754965040285,
+        -1.9779392617682598
+      ],
+      "initial_pusher_xy": [
+        0.5029164470717258,
+        0.11145032002054303
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 1,
+      "source_store": "demos_all.zarr",
+      "source_index": 309
+    },
+    {
+      "index": 310,
+      "n_frames": 209,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.5172408826869062,
+        0.16943677889081732,
+        -2.3176551644314665
+      ],
+      "initial_pusher_xy": [
+        0.30027924819394824,
+        -0.21794825876025936
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 2,
+      "source_store": "demos_all.zarr",
+      "source_index": 310
+    },
+    {
+      "index": 311,
+      "n_frames": 163,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.6440633048144793,
+        0.14815565155928,
+        -2.5363130940995378
+      ],
+      "initial_pusher_xy": [
+        0.49835307319005606,
+        -0.21332242887545264
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 3,
+      "source_store": "demos_all.zarr",
+      "source_index": 311
+    },
+    {
+      "index": 312,
+      "n_frames": 132,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.4907604494306947,
+        -0.06150982290371773,
+        -2.3365913509562057
+      ],
+      "initial_pusher_xy": [
+        0.5719603378203558,
+        0.02052997055039485
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 4,
+      "source_store": "demos_all.zarr",
+      "source_index": 312
+    },
+    {
+      "index": 313,
+      "n_frames": 168,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.4538738649917081,
+        -0.15776876384483293,
+        -2.0553418859624095
+      ],
+      "initial_pusher_xy": [
+        0.558265424493946,
+        0.010735453997399419
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 5,
+      "source_store": "demos_all.zarr",
+      "source_index": 313
+    },
+    {
+      "index": 314,
+      "n_frames": 129,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.4861617255079951,
+        -0.16564637578097682,
+        -0.08828660711627956
+      ],
+      "initial_pusher_xy": [
+        0.3733376607354862,
+        0.031420700111414984
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 6,
+      "source_store": "demos_all.zarr",
+      "source_index": 314
+    },
+    {
+      "index": 315,
+      "n_frames": 179,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.5180698366367592,
+        -0.015187977746533993,
+        2.5683227359041205
+      ],
+      "initial_pusher_xy": [
+        0.6580298451044041,
+        -0.15220935019042026
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 7,
+      "source_store": "demos_all.zarr",
+      "source_index": 315
+    },
+    {
+      "index": 316,
+      "n_frames": 164,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.46521432546459884,
+        0.17737853162234601,
+        -2.10278925684774
+      ],
+      "initial_pusher_xy": [
+        0.649326333425293,
+        -0.2187366698553013
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 8,
+      "source_store": "demos_all.zarr",
+      "source_index": 316
+    },
+    {
+      "index": 317,
+      "n_frames": 138,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 269412857592623542792432109305018462746,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.6278271135624924,
+        -0.008024935505833691,
+        1.1836847300503321
+      ],
+      "initial_pusher_xy": [
+        0.44982555750563347,
+        -0.030324443035694593
+      ],
+      "init_set": "failures_holdout_s20260825",
+      "init_index": 9,
+      "source_store": "demos_all.zarr",
+      "source_index": 317
+    },
+    {
+      "index": 318,
+      "n_frames": 189,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.3414292012594355,
+        0.1207967445723599,
+        -2.476643913459366
+      ],
+      "initial_pusher_xy": [
+        0.34702951133453663,
+        -0.06758191859572624
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 0,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 0
+    },
+    {
+      "index": 319,
+      "n_frames": 158,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.470373214436753,
+        0.14792199057290678,
+        -2.589574916730849
+      ],
+      "initial_pusher_xy": [
+        0.49230080897090367,
+        -0.04760623083197643
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 1,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 1
+    },
+    {
+      "index": 320,
+      "n_frames": 140,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.3397716666356797,
+        -0.17206377722534677,
+        0.02542251657731276
+      ],
+      "initial_pusher_xy": [
+        0.33975410289802865,
+        -0.04513637520562999
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 2,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 2
+    },
+    {
+      "index": 321,
+      "n_frames": 258,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.4239313771439964,
+        0.16985637509741564,
+        -1.5477468085348987
+      ],
+      "initial_pusher_xy": [
+        0.36696794482108397,
+        -0.10385503215838503
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 3,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 3
+    },
+    {
+      "index": 322,
+      "n_frames": 138,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.46775894615630664,
+        0.1718559790311407,
+        -2.069690624640126
+      ],
+      "initial_pusher_xy": [
+        0.3670344456156025,
+        0.14242264548799557
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 4,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 4
+    },
+    {
+      "index": 323,
+      "n_frames": 177,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.3525627785908399,
+        0.16349819632439044,
+        1.7329666576272156
+      ],
+      "initial_pusher_xy": [
+        0.6010350798501496,
+        0.08220094198711284
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 5,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 5
+    },
+    {
+      "index": 324,
+      "n_frames": 150,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.43816260718336547,
+        0.0037981261550546763,
+        -2.4100071695446332
+      ],
+      "initial_pusher_xy": [
+        0.634961053312213,
+        -0.026952148971029127
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 6,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 6
+    },
+    {
+      "index": 325,
+      "n_frames": 113,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.42326468880045376,
+        0.11160934374011883,
+        0.3702562385743646
+      ],
+      "initial_pusher_xy": [
+        0.2963281378857946,
+        -0.0654369755337744
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 7,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 7
+    },
+    {
+      "index": 326,
+      "n_frames": 216,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.4876402748431822,
+        0.15063408079809393,
+        -1.2054075844714063
+      ],
+      "initial_pusher_xy": [
+        0.46068147463225795,
+        -0.2006165365681761
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 8,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 8
+    },
+    {
+      "index": 327,
+      "n_frames": 171,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.4044932461914772,
+        0.1636370713504675,
+        -2.0052188561478275
+      ],
+      "initial_pusher_xy": [
+        0.46006721473399126,
+        -0.19465271460545616
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 9,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 9
+    },
+    {
+      "index": 328,
+      "n_frames": 126,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.39500444164848725,
+        0.11778448485613446,
+        -2.6384248620528354
+      ],
+      "initial_pusher_xy": [
+        0.5841908747806104,
+        0.04805220265005314
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 10,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 10
+    },
+    {
+      "index": 329,
+      "n_frames": 73,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.5441325600387814,
+        0.08459158955392365,
+        -0.8434904339169282
+      ],
+      "initial_pusher_xy": [
+        0.5213477275134153,
+        -0.10210652044701544
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 11,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 11
+    },
+    {
+      "index": 330,
+      "n_frames": 198,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.4476851898270805,
+        -0.14363937150407896,
+        2.7750745633586607
+      ],
+      "initial_pusher_xy": [
+        0.7116146615292283,
+        0.118412418655397
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 12,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 12
+    },
+    {
+      "index": 331,
+      "n_frames": 153,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.5109043624160721,
+        -0.15494996673949407,
+        2.7309594640132846
+      ],
+      "initial_pusher_xy": [
+        0.49411713271646285,
+        0.17761366664303876
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 13,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 13
+    },
+    {
+      "index": 332,
+      "n_frames": 158,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.661413385283404,
+        -0.12421552217695524,
+        -0.822070077324955
+      ],
+      "initial_pusher_xy": [
+        0.39234416543257766,
+        0.16236988346010803
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 14,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 14
+    },
+    {
+      "index": 333,
+      "n_frames": 156,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.38469118058699314,
+        -0.12369765193144525,
+        -0.935077292125591
+      ],
+      "initial_pusher_xy": [
+        0.6456190373305302,
+        -0.09916648478905714
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 15,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 15
+    },
+    {
+      "index": 334,
+      "n_frames": 136,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.641004627321557,
+        -0.08936409713804432,
+        0.5613849491769547
+      ],
+      "initial_pusher_xy": [
+        0.2824672018416411,
+        -0.05929104558607809
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 16,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 16
+    },
+    {
+      "index": 335,
+      "n_frames": 231,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.5325122558050326,
+        0.17438679327258183,
+        2.5869479129978035
+      ],
+      "initial_pusher_xy": [
+        0.6152824876502616,
+        0.18367475275293796
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 17,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 17
+    },
+    {
+      "index": 336,
+      "n_frames": 160,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.6388662782488036,
+        -0.03395846986529369,
+        -0.6353830373691585
+      ],
+      "initial_pusher_xy": [
+        0.3883783044626696,
+        0.07777514791767862
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 18,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 18
+    },
+    {
+      "index": 337,
+      "n_frames": 211,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.36669587211508053,
+        -0.16347297938886268,
+        -2.5298266054688883
+      ],
+      "initial_pusher_xy": [
+        0.670760781784812,
+        0.003605625399198481
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 19,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 19
+    },
+    {
+      "index": 338,
+      "n_frames": 160,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.5012094848371378,
+        -0.14242267649370116,
+        2.9068201066397257
+      ],
+      "initial_pusher_xy": [
+        0.5976834924895462,
+        0.17439149726585687
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 20,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 20
+    },
+    {
+      "index": 339,
+      "n_frames": 127,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.41683904279551864,
+        0.01950996729944582,
+        2.333631426834257
+      ],
+      "initial_pusher_xy": [
+        0.698229396103826,
+        -0.14800793880813218
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 21,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 21
+    },
+    {
+      "index": 340,
+      "n_frames": 145,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.6414061909424025,
+        -0.038733234060392696,
+        1.6611787443703787
+      ],
+      "initial_pusher_xy": [
+        0.5601272550877638,
+        -0.18479694314640097
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 22,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 22
+    },
+    {
+      "index": 341,
+      "n_frames": 190,
+      "accepted": true,
+      "policy_freq_hz": 10.0,
+      "seed": 215490668996901638708052231375694455439,
+      "source": "teleop-gamepad-dagger",
+      "goal_pose": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "initial_slider_pose": [
+        0.6690231315432693,
+        -0.17548085657242815,
+        0.23598100882622708
+      ],
+      "initial_pusher_xy": [
+        0.3950317621833158,
+        0.14730842207714676
+      ],
+      "init_set": "failures_s20260826_n100",
+      "init_index": 23,
+      "source_store": "_recording_20260825T173604.zarr",
+      "source_index": 23
+    }
+  ]
+}

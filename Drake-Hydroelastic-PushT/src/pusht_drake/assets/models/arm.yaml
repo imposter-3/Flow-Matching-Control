@@ -1,0 +1,52 @@
+# The arm and its pusher: the controller plant, and the arm half of the scene.
+#
+# This file is BOTH the model the arm's inverse dynamics and differential IK
+# solve against AND the arm portion of scene.yaml, included by reference, so
+# the two cannot drift. Adapted from the upstream Drake station's
+# iiwa_controller_plant_workspace_optimized.yaml
+# (Michaelszeng/diffusion-policy-drake; see NOTICE.md).
+
+directives:
+- add_model:
+    name: iiwa
+    # KUKA LBR iiwa 14 R820, straight from Drake's pinned drake_models. The
+    # no_collision variant is deliberate: the station runs strict hydroelastic
+    # contact, and raw arm collision geometry (no proximity properties) would
+    # make any arm contact a RuntimeError, not physics. Safety against
+    # self/table/column collision is by CONSTRUCTION of the certified action
+    # square and is re-measured on every acceptance run with a
+    # primitive-collision monitor plant.
+    file: package://drake_models/iiwa_description/sdf/iiwa14_no_collision.sdf
+
+# workspace_optimized profile (2026-08-23): iiwa14 on a 0.300 m pedestal at
+# (0.950, 0.000), yaw 180 deg so the base column's THIN side (its link-0 cylinder
+# is offset -15 mm in base x) faces the 480 mm action square centred at
+# (0.500, 0.000). The measured strict optimum: the largest square whose every
+# point has collision-free, joint-limit-respecting IK.
+- add_weld:
+    parent: world
+    child: iiwa::iiwa_link_0
+    X_PC:
+        rotation: !Rpy { deg: [0.0, 0.0, 180.0]}
+        translation: [0.950, 0.000, 0.300]
+
+- add_model:
+    name: pusher
+    file: package://pusht_drake/pusher.sdf
+
+- add_weld:
+    parent: iiwa::iiwa_link_7
+    child: pusher::pusher
+    X_PC:
+        rotation: !Rpy { deg: [0.0, 0.0, 0.0]}
+        # displace by half of the pusher length, so the pusher starts
+        # exactly at the iiwa_link_7 base frame
+        translation: [0.0, 0.0, 0.12]
+
+- add_frame:
+    name: pusher_end
+    X_PF:
+        base_frame: pusher::pusher
+        rotation: !Rpy { deg: [0.0, 0.0, 0.0]}
+        # displace by pusher length from the welded position
+        translation: [0.0, 0.0, 0.0875]
